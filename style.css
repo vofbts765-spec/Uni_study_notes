@@ -1,1 +1,341 @@
+ :root {
+      --bg-color: #070a0f;
+      --card-bg: #0c1017;
+      --card-border: rgba(180, 240, 0, 0.25);
+      --card-top-line: #b4f000;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-color: #b4f000;
+      --accent-hover: #d4ff4d;
+      --btn-universal: #4d7c0f;
+      --badge-active-bg: rgba(180, 240, 0, 0.12);
+      --badge-upcoming-bg: rgba(148, 163, 184, 0.1);
+      --nav-border: rgba(255, 255, 255, 0.08);
+    }
 
+    [data-theme="light"] {
+      --bg-color: #f4f6f8;
+      --card-bg: #ffffff;
+      --card-border: rgba(21, 128, 61, 0.22);
+      --card-top-line: #15803d;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-color: #15803d;
+      --accent-hover: #166534;
+      --btn-universal: #4d7c0f;
+      --badge-active-bg: rgba(21, 128, 61, 0.1);
+      --badge-upcoming-bg: rgba(100, 116, 139, 0.1);
+      --nav-border: rgba(15, 23, 42, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Top Header */
+    header {
+      border-bottom: 1px solid var(--nav-border);
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background-color: var(--bg-color);
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: var(--accent-color);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .back-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: var(--accent-color);
+    }
+
+    .theme-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 6px 11px;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--accent-color);
+    }
+
+   
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 44px 5% 72px;
+      flex: 1;
+    }
+
+    .page-header {
+      margin-bottom: 36px;
+    }
+
+    .tag-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-color);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.65rem, 3.6vw, 2.45rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .page-header p {
+      color: var(--text-secondary);
+      max-width: 700px;
+      font-size: clamp(0.92rem, 1.3vw, 1rem);
+    }
+
+
+    .semesters-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .semester-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-top: 2px solid var(--card-top-line);
+      border-radius: 12px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .semester-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .semester-card.upcoming {
+      border-top-color: var(--text-muted);
+      opacity: 0.88;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .sem-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .status-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-active {
+      background: var(--badge-active-bg);
+      color: var(--accent-color);
+    }
+
+    .status-upcoming {
+      background: var(--badge-upcoming-bg);
+      color: var(--text-muted);
+    }
+
+    .semester-card h2 {
+      font-size: 1.22rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .semester-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    /* Action Link */
+    .cyber-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #4d7c0f;
+      padding: 4px 0;
+      width: fit-content;
+      transition: color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    .cyber-link-btn .arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .cyber-link-btn:hover {
+      color: var(--accent-hover);
+    }
+
+    .cyber-link-btn:hover .arrow {
+      transform: translateX(5px);
+    }
+
+    .upcoming-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--nav-border);
+      text-align: center;
+      padding: 22px 5%;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Laptop / Medium Screens (<= 1100px) */
+    @media (max-width: 1100px) {
+      .semesters-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Mobile Screens (<= 600px) */
+    @media (max-width: 600px) {
+      header {
+        padding: 14px 16px;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .container {
+        padding: 28px 16px 52px;
+      }
+
+      .page-header {
+        margin-bottom: 24px;
+      }
+
+      .semesters-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .semester-card {
+        padding: 20px 18px;
+        border-radius: 10px;
+      }
+
+      .semester-card h2 {
+        font-size: 1.15rem;
+      }
+
+      .cyber-link-btn,
+      .upcoming-link {
+        padding: 6px 0;
+        min-height: 36px;
+      }
+
+      footer {
+        padding: 18px 16px;
+        font-size: 0.72rem;
+      }
+    }
